@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Aggiungi uno studente</title>
+</head>
+<body>
+	<form action="#" th:action="@{/gestionesegreteria/aggiungistudente}" th:object="${studente}">
+		<table>
+			<thead>
+				<tr>
+					<th>Matricola</th>
+					<th>Nome</th>
+					<th>Cognome</th>
+					<th>Data Nascita</th>
+					<th>Email</th>
+					<th>Indirizzo</th>
+					<th>Citta</th>
+					<th>Corso</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="text" th:field="*{matricola}" id="matricola"></td>
+					<td><input type="text" th:field="*{nome}" id="nome"></td>
+					<td><input type="text" th:field="*{cognome}" id="cognome"></td>
+					<td><input type="date" pattern="yyyy-MM-dd" th:field="*{dataNascita}" id="dataNascita"></td>
+					<td><input type="email" th:field="*{email}" id="email"></td>
+					<td><input type="text" th:field="*{indirizzo}" id="indirizzo"></td>
+					<td><input type="text" th:field="*{citta}" id="citta"></td>
+					<td>Corso di Laurea: </td>
+				<td> <select th:field="*{corsoLaurea}">
+						<div th:each="c: ${corsi}">	
+							<option th:value="${c.getCodice()}" th:text="${c.getNome()}" ></option>
+						</div>
+					</select>
+				</td>
+					
+					
+				</tr>
+			</tbody>
+
+		</table>
+		<input type="submit" value="Inserisci studente!">
+	</form>
+</body>
+</html>
