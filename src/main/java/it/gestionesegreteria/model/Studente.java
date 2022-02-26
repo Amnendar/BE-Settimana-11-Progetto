@@ -1,6 +1,8 @@
 package it.gestionesegreteria.model;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,7 +30,6 @@ public class Studente {
 	private String indirizzo;
 	@NotBlank
 	private String citta;
-	@NotBlank
 	private CorsoLaurea corsoLaurea;
 	
 	

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Aggiungi un Corso</title>
+</head>
+<body>
+	<form action="#" th:action="@{/gestionesegreteria/aggiungicorso}" th:object="${corso}" method="POST">
+		<table>
+			<thead>
+				<tr>
+					<th>Codice</th>
+					<th>Nome</th>
+					<th>Indirizzo</th>
+					<th>Numero di Esami</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="text" th:field="*{codice}" id="matricola"></td>
+					<td><input type="text" th:field="*{nome}" id="nome"></td>
+					<td><input type="text" th:field="*{indirizzo}" id="cognome"></td>
+					<td><input type="text" th:field="*{numeroEsami}" id="cognome"></td>
+				
+					
+					
+				</tr>
+			</tbody>
+
+		</table>
+		<input type="submit" value="Inserisci studente!">
+	</form>
+</body>
+</html>

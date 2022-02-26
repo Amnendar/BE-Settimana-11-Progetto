@@ -25,6 +25,7 @@ import it.gestionesegreteria.model.CorsoLaurea;
 import it.gestionesegreteria.model.Segreteria;
 import it.gestionesegreteria.model.Studente;
 
+
 //controller unico per entrambe le classi
 
 @Controller
@@ -40,11 +41,13 @@ public class SegreteriaController {
 		return ctx.getBean(Segreteria.class);
 	}
 
+	//metodi visualizza(funzionanti)
 	//visualizza gli studenti
 	
 	@GetMapping("/visualizzastudenti")
 	public ModelAndView visualizzaStudenti() {
-		return new ModelAndView ("visualizzaStudenti", "studenti", getSegreteria().mostraTuttiStudenti());
+		Segreteria segreteria = getSegreteria();
+		return new ModelAndView ("visualizzaStudenti", "segreteria", segreteria );
 			
 		
 	}
@@ -53,13 +56,16 @@ public class SegreteriaController {
 	
 	@GetMapping("/visualizzacorsi")
 	public ModelAndView visualizzaCorsi() {
-		return new ModelAndView ("visualizzaCorsi", "corsi", getSegreteria().mostraTuttiCorsi());
+		Segreteria segreteria = getSegreteria();
+		return new ModelAndView ("visualizzaCorsi", "segreteria", segreteria);
 			
 		
 	}
 	
-	
+	//Metodi inserisci
 	//inserimento Studente
+	
+	
 	
 	
 	@GetMapping("/formstudente")
@@ -80,13 +86,13 @@ public class SegreteriaController {
 	//inserimento Corso
 	
 	@GetMapping("/formcorso")
-	public ModelAndView formCorsi(CorsoLaurea c) {
+	public ModelAndView formCorso(CorsoLaurea c) {
 		ModelAndView mw = new ModelAndView("aggiungicorso", "corso", new CorsoLaurea());
 		return mw;
 	}
 	
 	@PostMapping("/aggiungicorso")
-	public ModelAndView aggiungiCorso(@Valid @ModelAttribute("corso")CorsoLaurea c, BindingResult result, Model model) {
+	public ModelAndView aggiungicorso(@Valid @ModelAttribute("corso")CorsoLaurea c, BindingResult result, Model model) {
 		getSegreteria().aggiungiCorso(c);
 		return visualizzaCorsi();
 	}
@@ -123,34 +129,40 @@ public class SegreteriaController {
 	}
 	
 	
+	//metodi cancella (funzionanti)
 	//cancella Studente
 	
-	@GetMapping("/formcancella/{matricola}")
-	public ModelAndView formCancellaStudente(@PathVariable("matricola") String matricola) {
-		Studente s = getSegreteria().getStudenti().get(matricola);
-		return new ModelAndView("cancellastudente", "studente", s);
+	@GetMapping("/eliminastudente/{matricola}")
+	public ModelAndView CancellaStudente(@PathVariable("matricola") String matricola, Model model) {
+		Segreteria segreteria = getSegreteria();
+		segreteria.eliminaStudente(matricola);
+		return visualizzaStudenti();
 	}
-	
+	/*
 	@DeleteMapping("/cancellastudente/{matricola}")
 	public ModelAndView cancellaStudente(@PathVariable("matricola")String matricola) {
 		getSegreteria().eliminaStudente(matricola);
 		return new ModelAndView("visualizzaStudenti", "studente", getSegreteria().mostraTuttiStudenti());
 	}
+	*/
+	
 	
 	//cancella Corso
 	
-	@GetMapping("/formcancella/{codice}")
-	public ModelAndView formCancellaCorso(@PathVariable("codice") String codice) {
-		CorsoLaurea c = getSegreteria().getCorsi().get(codice);
-		return new ModelAndView("cancellacorso", "corso", c);
+	@GetMapping("/eliminacorso/{codice}")
+	public ModelAndView formCancellaCorso(@PathVariable("codice") String codice, Model model) {
+		Segreteria segreteria = getSegreteria();
+		segreteria.eliminaCorso(codice);
+		return visualizzaCorsi();
 	}
 	
+	/*
 	@DeleteMapping("/cancellacorso/{codice}")
 	public ModelAndView cancellaCorso(@PathVariable("codice")String codice) {
 		getSegreteria().eliminaCorso(codice);
 		return new ModelAndView("visualizzaCorsi", "corso", getSegreteria().mostraTuttiCorsi());
 	}
-	
+	*/
 	
 	
 }

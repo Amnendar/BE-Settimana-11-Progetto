@@ -5,7 +5,7 @@
 <title>Aggiungi uno studente</title>
 </head>
 <body>
-	<form action="#" th:action="@{/gestionesegreteria/aggiungistudente}" th:object="${studente}">
+	<form action="#" th:action="@{/gestionesegreteria/aggiungistudente}" th:object="${studente}" method="POST">
 		<table>
 			<thead>
 				<tr>
@@ -29,9 +29,9 @@
 					<td><input type="text" th:field="*{indirizzo}" id="indirizzo"></td>
 					<td><input type="text" th:field="*{citta}" id="citta"></td>
 					<td>Corso di Laurea: </td>
-				<td> <select th:field="*{corsoLaurea}">
+					<td> <select th:field="*{corsoLaurea}">
 						<div th:each="c: ${corsi}">	
-							<option th:value="${c.getCodice()}" th:text="${c.getNome()}" ></option>
+						<option th:value="${c.getCodice()}" th:text="${c.getNome()}" ></option>
 						</div>
 					</select>
 				</td>
