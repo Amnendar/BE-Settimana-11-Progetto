@@ -62,7 +62,7 @@ public class SegreteriaController {
 		
 	}
 	
-	//Metodi inserisci
+	//Metodi inserisci (funzionanti)
 	//inserimento Studente
 	
 	
@@ -97,8 +97,8 @@ public class SegreteriaController {
 		return visualizzaCorsi();
 	}
 	
-	
-	
+	/*
+	//metodi aggiorna
 	//aggiorna Studente
 	
 	
@@ -127,7 +127,7 @@ public class SegreteriaController {
 		getSegreteria().aggiornaCorso(c);
 		return new ModelAndView("visualizzaCorsi", "corso", getSegreteria().mostraTuttiCorsi());
 	}
-	
+	*/
 	
 	//metodi cancella (funzionanti)
 	//cancella Studente
