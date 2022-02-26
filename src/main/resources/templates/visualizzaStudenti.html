@@ -9,6 +9,20 @@
 	<table>
 		<!-- th prende la collection e la cicla per tutti gli elementi, a runtime toglie i th: e mette i dati effettivi -->
 		<div th:each="s : ${segreteria.mostraTuttiStudenti()}">
+		<thead>
+				<tr>
+					<th>Matricola</th>
+					<th>Nome</th>
+					<th>Cognome</th>
+					<th>Data Nascita</th>
+					<th>Email</th>
+					<th>Indirizzo</th>
+					<th>Citta</th>
+					<th>Corso</th>
+				</tr>
+				
+			</thead>
+			<tbody>
 			<tr>
 		
 				<td th:text="${s.matricola}"></td>
@@ -22,6 +36,7 @@
 				
 		
 			</tr>
+			</tbody>
 		</div>
 	</table>
 
