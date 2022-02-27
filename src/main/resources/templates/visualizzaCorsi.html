@@ -24,7 +24,7 @@
 				<td th:text="${c.nome}"></td>
 				<td th:text="${c.indirizzo}"></td>
 				<td th:text="${c.numeroEsami}"></td>
-	
+				<td ><a th:href="@{/gestionesegreteria/eliminacorso/{codice}(codice=${c.getCodice()})}">Elimina</a></td>
 		
 			</tr>
 		</div>

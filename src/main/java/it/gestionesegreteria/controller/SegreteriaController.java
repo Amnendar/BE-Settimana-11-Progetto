@@ -97,10 +97,10 @@ public class SegreteriaController {
 		return visualizzaCorsi();
 	}
 	
-	/*
+	
 	//metodi aggiorna
 	//aggiorna Studente
-	
+	/*
 	
 	@GetMapping("/formaggiornastudente/{matricola}")
 	public ModelAndView formAggiornaStudente(@PathVariable("matricola") String matricola ) {
@@ -156,13 +156,7 @@ public class SegreteriaController {
 		return visualizzaCorsi();
 	}
 	
-	/*
-	@DeleteMapping("/cancellacorso/{codice}")
-	public ModelAndView cancellaCorso(@PathVariable("codice")String codice) {
-		getSegreteria().eliminaCorso(codice);
-		return new ModelAndView("visualizzaCorsi", "corso", getSegreteria().mostraTuttiCorsi());
-	}
-	*/
+	
 	
 	
 }
